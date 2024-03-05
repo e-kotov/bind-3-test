@@ -1,6 +1,6 @@
 # Run this repository in the web browser using Binder
 
-## **Push the button >>** [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/e-kotov/bind-3-test/HEAD?urlpath=rstudio)
+## Push the button >> [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/e-kotov/bind-3-test/HEAD?urlpath=rstudio)
 
 This repository contains files for the article about using containers for reproducible research with applications in demography.
 
@@ -8,10 +8,10 @@ This repository contains files for the article about using containers for reprod
 
 | File | Description |
 | --------| -------------------------- |
-| Dockerfile | This text file defines which container image Binder needs to launch. |
-| install.R | This R script contains lines to install packages required for the analysis. |
-| main.Rmd | This is the file with the example code we will run inside the container once it is launched. |
-| README.md | This is the current readme file that you are reading. |
+| [Dockerfile](/Dockerfile) | This text file defines which container image Binder needs to launch. |
+| [install.R](/install.R) | This R script contains lines to install packages required for the analysis. |
+| [main.Rmd](/main.Rmd) | This is the file with the example code we will run inside the container once it is launched. |
+| [README.md](https://raw.githubusercontent.com/e-kotov/bind-3-test/main/README.md) | This is the current readme file that you are reading. |
 
 
 ## How to create a button to launch the repository in a container using Binder
