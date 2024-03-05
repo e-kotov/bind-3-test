@@ -7,7 +7,7 @@ FROM rocker/binder:4.0.1
 
 # Declare an argument for the user inside the container image
 # For rocker/binder the default is NB_USER
-# ARG NB_USER
+ARG NB_USER
 
 # Copy all files in from the repository to the home directory of the user inside the container image.
 # At the same time, set the ownership of the files to the user inside the container.
