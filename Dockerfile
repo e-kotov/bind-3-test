@@ -7,11 +7,11 @@ FROM rocker/binder:4.0.1
 
 # Declare an argument for the user inside the container image
 # For rocker/binder the default is NB_USER
-ARG USER
+ARG USER1
 
 # Copy all files in from the repository to the home directory of the user inside the container image.
 # At the same time, set the ownership of the files to the user inside the container.
-COPY --chown=${USER} . ${HOME}
+COPY --chown=${USER1} . ${HOME}
 
 # If there is an install.R script in the current directory, execute it.
 # This is typically used for installing R dependencies.
