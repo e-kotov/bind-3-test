@@ -20,7 +20,7 @@ This readme contains simple code for the "launch binder" button that you can see
 
 | Code Part | Code                                                                    | Comments        |
 | ---- | ----------------------------------------------------------------------- | --------------- |
-| Constant    | `[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/` | Points the web browser to Binder |
+| Constant    | `[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/` | Creates a button and points the web browser to Binder. |
 | Change to your username and repository on GitHub    | `e-kotov/bind-3-test`                                                    | Specifies which repository to use for the container. The format is `<github-username>/<repository-name>`. |
 | Constant    | `/HEAD?urlpath=rstudio)`                                                 | Instructs Binder to use the main repository branch and to go to RStudio in the container. |
 
