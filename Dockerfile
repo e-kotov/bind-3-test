@@ -5,8 +5,16 @@
 # https://github.com/rocker-org/rocker-versioned2/blob/master/dockerfiles/binder_4.0.3.Dockerfile
 FROM rocker/binder:4.0.1
 
-# Copy all files in from the repository to the home directory of the user inside the container image.
-# At the same time, set the ownership of the files to the user inside the container.
+
+# Copy all files in from the repository to the home directory
+# of the user inside the container image.
+# This is needed so that R and Rmd files, as well as data, if any,
+# are available in the container when is starts in the web browser.
+#
+# While copying, set the ownership of the files to the user inside the container.
+# The name of the user inside the container is stored in the NB_USER variable,
+# which is predefined in the source conatiner here:
+# https://github.com/rocker-org/rocker-versioned2/blob/2db571dc64e401936ee14f64e454eaaba4f3d16f/dockerfiles/binder_4.0.3.Dockerfile#L8
 COPY --chown=${NB_USER} . ${HOME}
 
 
