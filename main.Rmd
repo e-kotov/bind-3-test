@@ -92,3 +92,44 @@ psu_polygons <- gs_sample(
 )
 plot(psu_polygons)
 ```
+
+
+## Create a final plot
+
+```{r}
+# load ggplot2 and scales
+library(ggplot2)
+library(scales)
+
+# convert spatial data to be compatible with ggplot and remove NAs
+population_raster_df <- as.data.frame(population_raster, xy = TRUE)
+population_raster_df <- population_raster_df[!is.na(population_raster_df$RWA_ppp_2010_adj_v2),]
+psu_polygons_sf <- sf::st_as_sf(psu_polygons)
+
+# Prepare breaks and labels for the original population values
+breaks <- c(1, 10, 100, 1000, 10000, 50000)
+labels <- as.character(breaks)
+
+# create the plot
+psu_plot <- ggplot() +
+  geom_raster(data = population_raster_df, aes(x = x, y = y, fill = RWA_ppp_2010_adj_v2)) +
+  scale_fill_viridis_c(trans = 'log10', breaks = breaks, labels = labels) +
+  labs(fill = "Population") + # Adjust the label
+  geom_sf(data = psu_polygons_sf, aes(color = ""), fill = NA, size = 0.3) +
+  scale_color_manual(values = "grey20", name = "", labels = "Primary Sampling\nUnits") +
+  labs(title = "Household survey primary sampling units (PSUs)\nfrom gridded population data in Rwanda",
+       subtitle = "Sample of locations\nrepresentative of both urban and rural areas",
+       caption = "using GridSample method and\ncorresponding R package (Thomson et al., 2017)",
+       x = "", y = "") +
+  theme_minimal(base_size = 8)
+
+# print the final plot
+print(psu_plot)
+```
+
+Save the plot for the publication:
+
+```{r}
+ggsave("psu_polygons.png", psu_plot, units = "cm", dpi = 160, width = 12, height = 10)
+```
+
