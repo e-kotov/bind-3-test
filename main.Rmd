@@ -2,22 +2,31 @@
 title: "Recreating the 2010 Rwanda DHS using GridSample"
 author: "Nick W Ruktanonchai, Dana R Thomson"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Rwanda 2010 DHS}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+output: 
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: true
+      toc_depth: 3
 ---
 
 
-**You can find the original vignette [here](https://github.com/cran/gridsample/blob/master/vignettes/Rwanda.Rmd). This code is intended to work with the [version of the package patched](https://github.com/e-kotov/gridsample) by [Egor Kotov](https://orcid.org/0000-0001-6690-5345). It should also be run using R version [4.0.1 from a Rocker Geospatial image](https://hub.docker.com/layers/rocker/geospatial/4.0.1/images/sha256-8282e2f8dfa487a29ce8a78cf5beca1548cc0a0b5142f2f3559d5e3a461dee16).**
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(fig.width=7, fig.height=5,
+                      warning = FALSE, message = FALSE)
+```
 
-The fixed version of the `gridsample` package is already installed if you are running this code from a mybinder deployed container, but if you are running this manually, you may have to install the package manually with he line below:
+
+
+
+*You can find the original vignette [here](https://github.com/cran/gridsample/blob/master/vignettes/Rwanda.Rmd). The code in this adjusted vignette is intended to work with the [latest functioning version of the GridSample package ](https://github.com/e-kotov/gridsample). This code should be executed using R version [4.0.1 from a Rocker Geospatial container image](https://hub.docker.com/layers/rocker/geospatial/4.0.1/images/sha256-8282e2f8dfa487a29ce8a78cf5beca1548cc0a0b5142f2f3559d5e3a461dee16).*
+
+The fixed version of the `gridsample` package is already installed if you are running this code from a Binder deployed container, but if you are running this code on your local machine or a Docker container, you may have to install the package manually with the line below:
 
 ```{r}
 # remotes::install_github("e-kotov/gridsample", force = T)
 ```
-
 
 Here we use the GridSample package (<https://doi.org/10.1186/s12942-017-0098-4>) to replicate the sample design of the 2010 Rwanda DHS. Further details are available at: <www.dhsprogram.com/pubs/pdf/FR259/FR259.pdf>.
 
@@ -72,7 +81,8 @@ plot(urban_raster)
 
 Now that we have the population, strata, and urbanization rasters, we are ready to use the gridsample algorithm. We exclude any grid cells with a population less than 0.01 to prevent the algorithm from creating overly large sampling areas (`cfg_min_pop_per_cell = 0.01`), also restricting the total PSU size to less than 10km^2 (`cfg_max_psu_size = 10`). Finally, because we wanted the sample to be representative of both urban and rural areas, we allowed the algorithm to oversample rural or urban areas by setting `cfg_sample_rururb = TRUE`. We save the output shapefile to a temporary directory.
 
-```{r}
+```{r gs_sample, results='hide'}
+set.seed(32131)
 psu_polygons <- gs_sample(
   population_raster = population_raster,
   strata_raster = strata_raster,
@@ -90,8 +100,9 @@ psu_polygons <- gs_sample(
   output_path = tempdir(),
   sample_name = "rwanda_psu"
 )
-plot(psu_polygons)
 ```
+
+
 
 
 ## Create a final plot
