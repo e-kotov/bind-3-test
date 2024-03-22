@@ -24,8 +24,8 @@ knitr::opts_chunk$set(fig.width=7, fig.height=5,
 
 The fixed version of the `gridsample` package is already installed if you are running this code from a Binder deployed container, but if you are running this code on your local machine or a Docker container, you may have to install the package manually with the line below:
 
-```{r}
-# remotes::install_github("e-kotov/gridsample", force = T)
+```{r eval=FALSE}
+remotes::install_github("e-kotov/gridsample", force = T)
 ```
 
 Here we use the GridSample package [https://doi.org/10.1186/s12942-017-0098-4](https://doi.org/10.1186/s12942-017-0098-4){target="_blank"} to replicate the sample design of the 2010 Rwanda DHS. Further details are available at: [https://www.dhsprogram.com/pubs/pdf/FR259/FR259.pdf](https://www.dhsprogram.com/pubs/pdf/FR259/FR259.pdf){target="_blank"}.
