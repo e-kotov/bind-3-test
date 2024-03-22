@@ -20,7 +20,7 @@ knitr::opts_chunk$set(fig.width=7, fig.height=5,
 
 
 
-*You can find the original vignette [here](https://github.com/cran/gridsample/blob/master/vignettes/Rwanda.Rmd). The code in this adjusted vignette is intended to work with the [latest functioning version of the GridSample package ](https://github.com/e-kotov/gridsample). This code should be executed using R version [4.0.1 from a Rocker Geospatial container image](https://hub.docker.com/layers/rocker/geospatial/4.0.1/images/sha256-8282e2f8dfa487a29ce8a78cf5beca1548cc0a0b5142f2f3559d5e3a461dee16).*
+*You can find the original vignette [here](https://github.com/cran/gridsample/blob/master/vignettes/Rwanda.Rmd){target="_blank"}. The code in this adjusted vignette is intended to work with the [latest functioning version of the GridSample package ](https://github.com/e-kotov/gridsample){target="_blank"}. This code should be executed using R version [4.0.1 from a Rocker Geospatial container image](https://hub.docker.com/layers/rocker/geospatial/4.0.1/images/sha256-8282e2f8dfa487a29ce8a78cf5beca1548cc0a0b5142f2f3559d5e3a461dee16){target="_blank"}.*
 
 The fixed version of the `gridsample` package is already installed if you are running this code from a Binder deployed container, but if you are running this code on your local machine or a Docker container, you may have to install the package manually with the line below:
 
@@ -28,7 +28,7 @@ The fixed version of the `gridsample` package is already installed if you are ru
 # remotes::install_github("e-kotov/gridsample", force = T)
 ```
 
-Here we use the GridSample package (<https://doi.org/10.1186/s12942-017-0098-4>) to replicate the sample design of the 2010 Rwanda DHS. Further details are available at: <www.dhsprogram.com/pubs/pdf/FR259/FR259.pdf>.
+Here we use the GridSample package [https://doi.org/10.1186/s12942-017-0098-4](https://doi.org/10.1186/s12942-017-0098-4){target="_blank"} to replicate the sample design of the 2010 Rwanda DHS. Further details are available at: [https://www.dhsprogram.com/pubs/pdf/FR259/FR259.pdf](https://www.dhsprogram.com/pubs/pdf/FR259/FR259.pdf){target="_blank"}.
 
 ## Parameters
 
@@ -105,7 +105,7 @@ psu_polygons <- gs_sample(
 
 
 
-## Create a final plot
+## Create the final plot
 
 ```{r}
 # load ggplot2 and scales
@@ -138,7 +138,7 @@ psu_plot <- ggplot() +
 print(psu_plot)
 ```
 
-Save the plot for the publication:
+Save the final plot for the publication:
 
 ```{r}
 ggsave("psu_polygons.png", psu_plot, units = "cm", dpi = 160, width = 12, height = 10)
