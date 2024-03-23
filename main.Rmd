@@ -1,6 +1,6 @@
 ---
 title: "Recreating the 2010 Rwanda DHS using GridSample"
-author: "Nick W Ruktanonchai, Dana R Thomson"
+author: "Nick W Ruktanonchai, Dana R Thomson, also Egor Kotov (added the final map)"
 date: "`r Sys.Date()`"
 output: 
   html_document:
